@@ -1,0 +1,67 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "A user can sign up and sign in securely so their to-do items are tied to their own account and stay private",
+      "stories": [1],
+      "criteria": [
+        { "id": "AC-001-a", "must": "An unauthenticated visitor is prompted to sign in before reaching the to-do list", "method": "e2e" },
+        { "id": "AC-001-b", "must": "After signing in, the user reaches their own to-do list", "method": "e2e" },
+        { "id": "AC-001-c", "must": "A signed-in user cannot see another user's to-do items", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "statement": "A user can create a to-do item with a title and description",
+      "stories": [2],
+      "criteria": [
+        { "id": "AC-002-a", "must": "Submitting the new to-do form with a title creates a to-do item", "method": "e2e" },
+        { "id": "AC-002-b", "must": "A created to-do item stores the description entered", "method": "e2e" },
+        { "id": "AC-002-c", "must": "Submitting the new to-do form without a title is rejected", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "statement": "A user can view their list of to-do items, seeing what is pending and what is done",
+      "stories": [3],
+      "criteria": [
+        { "id": "AC-003-a", "must": "The to-do list shows every to-do item the user has created", "method": "e2e" },
+        { "id": "AC-003-b", "must": "The to-do list distinguishes pending items from completed items", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "statement": "A user can edit a to-do item's title or description",
+      "stories": [4],
+      "criteria": [
+        { "id": "AC-004-a", "must": "Editing a to-do item's title persists the new title", "method": "e2e" },
+        { "id": "AC-004-b", "must": "Editing a to-do item's description persists the new description", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "statement": "A user can mark a to-do item as complete or incomplete to track progress",
+      "stories": [5],
+      "criteria": [
+        { "id": "AC-005-a", "must": "Marking a pending to-do item complete updates its status to done", "method": "e2e" },
+        { "id": "AC-005-b", "must": "Marking a completed to-do item incomplete updates its status back to pending", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A user can delete a to-do item they no longer need",
+      "stories": [6],
+      "criteria": [
+        { "id": "AC-006-a", "must": "Deleting a to-do item removes it from the user's list", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-007",
+      "statement": "A user's to-do items persist across sessions and devices",
+      "stories": [7],
+      "criteria": [
+        { "id": "AC-007-a", "must": "A to-do item created in one session is still present after signing out and signing back in", "method": "e2e" }
+      ]
+    }
+  ]
+}

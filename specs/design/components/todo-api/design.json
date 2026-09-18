@@ -1,0 +1,17 @@
+{
+  "name": "todo-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "todo-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "todo-db", "resourceType": "postgres-cnpg" },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "REST API owning to-do items: create, list, update, complete/incomplete, and delete, each scoped to the signed-in caller via the gateway's identity assertion. Persists to its own Postgres database. Does not serve any UI and does not manage user accounts — identity comes entirely from Thunder.",
+  "stories": [2, 3, 4, 5, 6, 7],
+  "skillsPinned": ["openapi-conventions", "ballerina", "thunder-authentication", "api-management"]
+}
