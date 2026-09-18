@@ -7,11 +7,54 @@
   "appPath": "todo-api",
   "entrypoint": "deployment/service",
   "exposure": "intranet",
-  "dependencies": [
-    { "kind": "platform-resource", "name": "todo-db", "resourceType": "postgres-cnpg" },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
   ],
   "description": "REST API owning to-do items: create, list, update, complete/incomplete, and delete, each scoped to the signed-in caller via the gateway's identity assertion. Persists to its own Postgres database. Does not serve any UI and does not manage user accounts — identity comes entirely from Thunder.",
-  "stories": [2, 3, 4, 5, 6, 7],
-  "skillsPinned": ["openapi-conventions", "ballerina", "thunder-authentication", "api-management"]
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "todo-db",
+      "resourceType": "postgres-cnpg",
+      "wiring": {
+        "ref": "todo-webapp-authe-563c2b50",
+        "envBindings": {
+          "dbname": "TODO_DB_DBNAME",
+          "host": "TODO_DB_HOST",
+          "password": "TODO_DB_PASSWORD",
+          "port": "TODO_DB_PORT",
+          "user": "TODO_DB_USER"
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "todo-webapp-authe-4e0aaae9",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "exposesAPI": {
+    "auth": "end-user-required"
+  },
+  "skillsPinned": [
+    "openapi-conventions",
+    "ballerina",
+    "thunder-authentication",
+    "api-management"
+  ]
 }
